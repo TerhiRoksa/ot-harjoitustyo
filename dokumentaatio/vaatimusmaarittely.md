@@ -1,23 +1,23 @@
-**Vaatimusmäärittely**
+# Vaatimusmäärittely 
 
-*Sovelluksen tarkoitus*
+## Sovelluksen tarkoitus
 
 Sovelluksen tarkoitus on auttaa painonhallinnassa. Siihen voi tallentaa 
 usein syömiään ruokia ja niiden kalorimääriä. Sovellusta voi käyttää 
 useampi kirjautunut käyttäjä.
 
-*Käyttäjät*
+## Käyttäjät
 
 Sovelluksessa on yhdenlaisia käyttäjiä.
 
-*Toiminnallisuudet*
+## Toiminnallisuudet
 
 Käyttäjä voi luoda sovellukseen käyttäjätunnuksen.
 Käyttäjä voi kirjautua sisään ja ulos sovelluksesta.
 Käyttäjä näkee tallentamansa ruokatiedot.
 Käyttäjä voi tallentaa uusia ruokatietoja.
 
-*Jatkokehitys*
+## Jatkokehitys
 
 Sovellukseen voidaan lisätä pääkäyttäjä, jolla on enenmmän oikeuksia kuin 
 tavallisella käyttäjällä.
