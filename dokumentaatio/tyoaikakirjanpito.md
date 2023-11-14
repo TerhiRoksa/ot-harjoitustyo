@@ -1,4 +1,4 @@
 päivä  aika  tehtävä
 
-14.11.  3    Tutustuin ohjeisiin. Mietin aihetta ja kirjoitin 
-             vaatimusmäärittelyn. 
+13.11.  1 tunti     Tutustuin ohjeisiin.
+14.11.  2 tuntia    Mietin aihetta ja kirjoitin vaatimusmäärittelyn. 

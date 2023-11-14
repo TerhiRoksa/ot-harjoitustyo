@@ -19,8 +19,9 @@ Käyttäjä voi tallentaa uusia ruokatietoja.
 
 ## Jatkokehitys
 
-Sovellukseen voidaan lisätä pääkäyttäjä, jolla on enenmmän oikeuksia kuin 
+Sovellukseen voidaan lisätä pääkäyttäjä, jolla on enemmän oikeuksia kuin 
 tavallisella käyttäjällä.
 Sovellukseen voidaan tallentaa valmiiksi ruokia, joita tavallinen käyttäjä 
 voi valita.
+Sovellukseen voidaan tallentaa käyttäjän kalorinkulutusmääriä.
 
