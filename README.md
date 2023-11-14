@@ -8,4 +8,5 @@ kirjaa *syömisistään*, tallentaa ruokia ja laskea kalorimääriä.
 [
 ](https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md
 
-https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito
+[
+](https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md
