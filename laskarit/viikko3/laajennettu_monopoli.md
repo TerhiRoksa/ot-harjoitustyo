@@ -18,9 +18,9 @@
     Monopolipeli -- Vankila
     
     Sattuma_ja_yhteismaa -- Kortti
-    Normaalit_kadut -- "1" --> "0..4" Talo
-    Normaalit_kadut -- "1" --> "0..1" Hotelli
-    Normaali_kadut -- "1" --> "1" Pelaaja
+    Normaalit_kadut --|> Talo : "1" --> "0..4"
+    Normaalit_kadut --|> Hotelli : "1" --> "0..1"
+    Normaalit_kadut --|> Pelaaja : "1" --> "1"
 
     class Aloitusruutu {
         + toiminto()
