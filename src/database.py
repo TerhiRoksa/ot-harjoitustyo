@@ -1,3 +1,4 @@
+# generoitu koodi alkaa
 import sqlite3
 import hashlib
 
@@ -37,4 +38,4 @@ class SimpleLoginSystemDB:
                 print(f"Kirjautuminen onnistui. Tervetuloa, {username}!")
             else:
                 print("Virheellinen käyttäjänimi tai salasana.")
-
+# generoitu koodi päättyy
