@@ -1,16 +1,21 @@
 # generoitu koodi alkaa
 # omilla muutoksilla
 import tkinter as tk
+from tkinter import messagebox
+from database import SimpleLoginSystemDB
+from repositories.calorie_counter import CalorieCounter
+#from ui.login import Log
 
 
 class View:
-    def __init__(self, master, calorie_counter):
+    def __init__(self, master, login_system, calorie_counter):
         self.master = master
         master.geometry("500x800")
         self.empty_space_frame = tk.Frame(master, height=40)
         self.empty_space_frame.pack()
         master.title("Painonhallintasovellus")
         self.calorie_counter = calorie_counter
+        self.login_system = login_system
 
         app_name_font = ("Helvetica", 20)
         self.app_name_label = tk.Label(
