@@ -8,14 +8,15 @@ useampi kirjautunut käyttäjä.
 
 ## Käyttäjät
 
-Sovelluksessa on yhdenlaisia käyttäjiä.
+Sovelluksessa on yhdenlaisia käyttäjiä. "Tehty"
 
 ## Toiminnallisuudet
 
-Käyttäjä voi luoda sovellukseen käyttäjätunnuksen.
-Käyttäjä voi kirjautua sisään ja ulos sovelluksesta.
-Käyttäjä näkee tallentamansa ruokatiedot.
-Käyttäjä voi tallentaa uusia ruokatietoja.
+- Käyttäjä voi luoda sovellukseen käyttäjätunnuksen. "Tehty"
+- Käyttäjä voi kirjautua sisään. "Tehty"
+- Käyttäjä voi kirjautua ulos sovelluksesta.
+- Käyttäjä näkee tallentamansa ruokatiedot.
+- Käyttäjä voi tallentaa uusia ruokatietoja.
 
 ## Jatkokehitys
 
