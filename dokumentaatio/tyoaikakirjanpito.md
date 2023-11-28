@@ -5,3 +5,7 @@ päivä  aika  tehtävä
 - 18.11.  1 tunti     Tein viikon 3 harjoitustyötehtäviä.
 - 19.11.  4 tuntia    Toteutin ensimmäiset osat ja testit.  
 - 20.11.  1 tunti     Viimeistelin viikon 3 palautuksen.
+- 27.11.  2 tuntia    Tein kirjautumista.
+- 28.11.  6 tuntia    Tein kirjautumista ja tallennusta.
+
+Summa 17 tuntia

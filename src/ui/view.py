@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 from database import SimpleLoginSystemDB
 from repositories.calorie_counter import CalorieCounter
-#from ui.login import Log
+# from ui.login import Log
 
 
 class View:
