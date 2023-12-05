@@ -15,8 +15,8 @@ Sovelluksessa on yhdenlaisia käyttäjiä. "Tehty"
 - Käyttäjä voi luoda sovellukseen käyttäjätunnuksen. "Tehty"
 - Käyttäjä voi kirjautua sisään. "Tehty"
 - Käyttäjä voi kirjautua ulos sovelluksesta.
-- Käyttäjä näkee tallentamansa ruokatiedot.
-- Käyttäjä voi tallentaa uusia ruokatietoja.
+- Käyttäjä näkee tallentamansa ruokatiedot. "Tehty"
+- Käyttäjä voi tallentaa uusia ruokatietoja. "Tehty"
 
 ## Jatkokehitys
 
