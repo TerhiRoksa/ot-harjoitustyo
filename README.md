@@ -11,3 +11,5 @@ kirjaa *syömisistään*, tallentaa ruokia ja laskea kalorimääriä.
 [Changelog](https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
 [Arkkitehtuuri](https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+
+[Releases](https://github.com/TerhiRoksa/ot-harjoitustyo/releases)
