@@ -1,26 +1,23 @@
 # generoitu koodi alkaa
-# omilla muutoksilla
 import tkinter as tk
-from tkinter import messagebox
 from database import SimpleLoginSystemDB
 from repositories.calorie_counter import CalorieCounter
-# from ui.login import Log
+from repositories.food import Food
 
 
 class View:
     def __init__(self, master, login_system, calorie_counter):
         self.master = master
         master.geometry("500x800")
-        self.empty_space_frame = tk.Frame(master, height=40)
-        self.empty_space_frame.pack()
         master.title("Painonhallintasovellus")
+
         self.calorie_counter = calorie_counter
         self.login_system = login_system
 
-        app_name_font = ("Helvetica", 20)
-        self.app_name_label = tk.Label(
-            master, text="Painonhallintasovellus", font=app_name_font)
-        self.app_name_label.pack(pady=20)
+        # app_name_font = ("Helvetica", 20)
+        # self.app_name_label = tk.Label(
+        #    master, text="Painonhallintasovellus", font=app_name_font)
+        # self.app_name_label.pack(pady=20)
 
         self.label = tk.Label(master, text="Lisää syömäsi ruoka")
         self.label.pack(pady=10)
@@ -30,7 +27,10 @@ class View:
 
         self.button = tk.Button(
             master, text="Lisää ruoka", command=self.button_click)
-        self.button.pack(pady=20)
+        self.button.pack(pady=10)
+
+        self.food_list_text = tk.Text(master, height=4, width=30)
+        self.food_list_text.pack(pady=10)
 
         self.calorie_label = tk.Label(master, text="kirjoita tähän kalorit:")
         self.calorie_label.pack(pady=5)
@@ -46,9 +46,22 @@ class View:
             master, text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
         self.total_label.pack(pady=10)
 
+        # self.login_button = tk.Button(
+        #    master, text="Kirjaudu sisään", command=self.show_login_view)
+        # self.login_button.pack(pady=10)
+
+        # Luo kirjautumisnäkymä, mutta pidä se piilossa aluksi
+        # self.login_view = LoginView(tk.Toplevel(), self, calorie_counter)
+
     def button_click(self):
         user_input = self.entry.get()
         self.label.config(text=f"Lisätty ruoka: {user_input}")
+        self.add_food()
+
+    def add_food(self):
+        food_name = self.entry.get()
+        self.login_system.add_food(user_id=1, food_name=food_name)
+        self.update_food_list()
 
     def add_calories(self):
         try:
@@ -59,5 +72,23 @@ class View:
         except ValueError:
             self.total_label.config(
                 text="Virheellinen syöte. Anna kelvollinen luku.")
+
+    def show_login_view(self):
+        # Aseta kirjautumisnäkymä näkyväksi
+        self.login_view.show()
+        # self.login_view.login(self.calorie_counter)
+
+    def update_content(self, calorie_counter):
+        # Päivitä käyttöliittymän sisältö kirjautumisen jälkeen
+        self.calorie_counter = calorie_counter
+        self.total_label.config(
+            text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
+
+    def update_food_list(self):
+        user_foods = self.login_system.get_user_foods(user_id=1)
+        self.food_list_text.delete(1.0, tk.END)
+        for food in user_foods:
+            self.food_list_text.insert(tk.END, str(food) + '\n')
+        # print("Käyttäjän ruoat:", user_foods)
 
 # generoitu koodi päättyy
