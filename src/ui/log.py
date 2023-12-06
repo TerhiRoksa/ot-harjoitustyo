@@ -1,6 +1,6 @@
 import tkinter as tk
 from database import SimpleLoginSystemDB
-
+from ui.view import View
 # generoitu koodi alkaa
 
 
@@ -24,9 +24,9 @@ class Log:
         self.log_label.pack(pady=5)
         tk.Button(self.root, text="Kirjaudu", command=self.login).pack()
 
-        # self.reg_label = tk.Label(text="Luo tästä uusi käyttäjätunnus ja salasana.")
-        # self.reg_label.pack(pady=5)
-        # tk.Button(self.root, text="Rekisteröi uusi käyttäjä", command=self.register).pack()
+        self.reg_label = tk.Label(text="Luo tästä uusi käyttäjätunnus ja salasana.")
+        self.reg_label.pack(pady=5)
+        tk.Button(self.root, text="Rekisteröi uusi käyttäjä", command=self.register).pack()
 
         if self.login_success_callback:
             self.login_success_callback()
@@ -46,14 +46,22 @@ class Log:
         username = self.username_entry.get()
         password = self.password_entry.get()
 
-        self.login_system.login_user(username, password)
-        if True:
+        login_successful = self.login_system.login_user(username, password)
+
+        if login_successful:
             self.log_label.config(
                 text=f"Kirjautuminen onnistui. Tervetuloa, {username}!")
+            self.hide_login_view()
+            
         else:
             self.log_label.config(
                 text="Virheellinen käyttäjänimi tai salasana.")
 
         self.username_entry.delete(0, tk.END)
         self.password_entry.delete(0, tk.END)
+    
+    def hide_login_view(self):
+        # Piilota kirjautumisnäkymä
+        self.root.withdraw()
+        self.login_success_callback()
 # generoitu koodi päättyy

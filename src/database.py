@@ -35,6 +35,19 @@ class SimpleLoginSystemDB:
                 )
             ''')
 
+    def clear_data(self):
+        # Poista kaikki tiedot käyttäjätietokannasta
+        with sqlite3.connect(self.db_name) as connection:
+            cursor = connection.cursor()
+            cursor.execute('DELETE FROM users')
+        
+        # Poista kaikki tiedot ruokatietokannasta
+        with sqlite3.connect(self.food_db_name) as connection:
+            cursor = connection.cursor()
+            cursor.execute('DELETE FROM foods')
+
+        print("Tietokannan tiedot tyhjennetty onnistuneesti.")
+
     def register_user(self, username, password):
         password_hash = hashlib.sha256(password.encode()).hexdigest()
         with sqlite3.connect(self.db_name) as connection:
@@ -49,10 +62,17 @@ class SimpleLoginSystemDB:
             cursor.execute(
                 'SELECT * FROM users WHERE username=? AND password_hash=?', (username, password_hash))
             user = cursor.fetchone()
-            # if user:
-            # print(f"Kirjautuminen onnistui. Tervetuloa, {username}!")
-            # else:
-            # print("Virheellinen käyttäjänimi tai salasana.")
+            if user:
+                return True
+            else:
+                return False
+
+    def get_user(username, db_name='users.db'):
+        with sqlite3.connect(db_name) as connection:
+            cursor = connection.cursor()
+            cursor.execute('SELECT id FROM users WHERE username=?', (username,))
+            user_id = cursor.fetchone()
+            return user_id[0] if user_id else None
 
     def add_food(self, user_id, food_name):
         with sqlite3.connect(self.food_db_name) as connection:

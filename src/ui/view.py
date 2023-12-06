@@ -91,4 +91,8 @@ class View:
             self.food_list_text.insert(tk.END, str(food) + '\n')
         # print("Käyttäjän ruoat:", user_foods)
 
+    def show(self):
+        # Näytä näkymä
+        self.master.deiconify()
+
 # generoitu koodi päättyy
