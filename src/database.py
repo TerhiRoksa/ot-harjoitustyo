@@ -40,7 +40,7 @@ class SimpleLoginSystemDB:
         with sqlite3.connect(self.db_name) as connection:
             cursor = connection.cursor()
             cursor.execute('DELETE FROM users')
-        
+
         # Poista kaikki tiedot ruokatietokannasta
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
@@ -70,7 +70,8 @@ class SimpleLoginSystemDB:
     def get_user(username, db_name='users.db'):
         with sqlite3.connect(db_name) as connection:
             cursor = connection.cursor()
-            cursor.execute('SELECT id FROM users WHERE username=?', (username,))
+            cursor.execute(
+                'SELECT id FROM users WHERE username=?', (username,))
             user_id = cursor.fetchone()
             return user_id[0] if user_id else None
 

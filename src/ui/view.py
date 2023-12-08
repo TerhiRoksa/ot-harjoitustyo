@@ -46,13 +46,6 @@ class View:
             master, text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
         self.total_label.pack(pady=10)
 
-        # self.login_button = tk.Button(
-        #    master, text="Kirjaudu sisään", command=self.show_login_view)
-        # self.login_button.pack(pady=10)
-
-        # Luo kirjautumisnäkymä, mutta pidä se piilossa aluksi
-        # self.login_view = LoginView(tk.Toplevel(), self, calorie_counter)
-
     def button_click(self):
         user_input = self.entry.get()
         self.label.config(text=f"Lisätty ruoka: {user_input}")
@@ -73,13 +66,7 @@ class View:
             self.total_label.config(
                 text="Virheellinen syöte. Anna kelvollinen luku.")
 
-    def show_login_view(self):
-        # Aseta kirjautumisnäkymä näkyväksi
-        self.login_view.show()
-        # self.login_view.login(self.calorie_counter)
-
     def update_content(self, calorie_counter):
-        # Päivitä käyttöliittymän sisältö kirjautumisen jälkeen
         self.calorie_counter = calorie_counter
         self.total_label.config(
             text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
@@ -91,8 +78,7 @@ class View:
             self.food_list_text.insert(tk.END, str(food) + '\n')
         # print("Käyttäjän ruoat:", user_foods)
 
-    def show(self):
-        # Näytä näkymä
-        self.master.deiconify()
+    def main_view_show(self):
+        self.root.deiconify()
 
 # generoitu koodi päättyy

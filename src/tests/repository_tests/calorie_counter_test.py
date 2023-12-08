@@ -1,5 +1,4 @@
 import unittest
-
 from repositories.calorie_counter import CalorieCounter
 
 
