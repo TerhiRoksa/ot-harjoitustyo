@@ -1,7 +1,6 @@
-# import tkinter as tk
+
 from ui.log import Log
 from ui.view import View
-# from database import SimpleLoginSystemDB
 
 
 class RunApplication:

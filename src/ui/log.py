@@ -1,6 +1,6 @@
 import tkinter as tk
 from database import SimpleLoginSystemDB
-# from ui.view import View
+
 # generoitu koodi alkaa
 
 
@@ -51,7 +51,7 @@ class Log:
         if login_successful:
             self.log_label.config(
                 text=f"Kirjautuminen onnistui. Tervetuloa, {username}!")
-            # self.hide_login_view()
+
             self.on_login_success()
 
         else:
@@ -64,5 +64,8 @@ class Log:
     def hide_login_view(self):
         # Piilota kirjautumisnäkymä
         self.root.withdraw()
+
+    def show_login_view(self):
+        self.root.deiconify()
 
 # generoitu koodi päättyy
