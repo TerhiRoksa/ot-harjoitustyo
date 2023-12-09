@@ -67,7 +67,7 @@ class SimpleLoginSystemDB:
             else:
                 return False
 
-    def get_user(username, db_name='users.db'):
+    def get_user(self, username, db_name='users.db'):
         with sqlite3.connect(db_name) as connection:
             cursor = connection.cursor()
             cursor.execute(

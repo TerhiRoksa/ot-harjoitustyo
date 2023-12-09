@@ -3,58 +3,92 @@ import tkinter as tk
 from database import SimpleLoginSystemDB
 from repositories.calorie_counter import CalorieCounter
 from repositories.food import Food
+from services.scrolledframe import ScrolledFrame
 
 
 class View:
-    def __init__(self, master, login_system, calorie_counter):
+    def __init__(self, master, login_system, calorie_counter, username):
         self.master = master
         master.geometry("500x800")
         master.title("Painonhallintasovellus")
-
+        self.username = username
         self.calorie_counter = calorie_counter
         self.login_system = login_system
 
-        # app_name_font = ("Helvetica", 20)
-        # self.app_name_label = tk.Label(
-        #    master, text="Painonhallintasovellus", font=app_name_font)
-        # self.app_name_label.pack(pady=20)
+        self.scrolled_frame = ScrolledFrame(master)
+        self.scrollable_frame = self.scrolled_frame.scrollable_frame
+
+        # self.empty_space = tk.Label(self.scrollable_frame, text="", width=15)
+        # self.empty_space.pack(side="left", fill="both")
+        self.empty_space_top = tk.Label(
+            self.scrollable_frame, text="", height=5)
+        self.empty_space_top.pack(side="top", fill="both")
+
+        app_name_font = ("Helvetica", 20)
+        self.app_name_label = tk.Label(
+            master, text="Painonhallintasovellus", font=app_name_font)
+        self.app_name_label.pack(in_=self.scrollable_frame, pady=20)
 
         self.label = tk.Label(master, text="Lisää syömäsi ruoka")
-        self.label.pack(pady=10)
+        self.label.pack(in_=self.scrollable_frame, pady=10)
 
         self.entry = tk.Entry(master)
-        self.entry.pack(pady=10)
+        self.entry.pack(in_=self.scrollable_frame, pady=10,
+                        side="top", anchor="center")
 
         self.button = tk.Button(
             master, text="Lisää ruoka", command=self.button_click)
-        self.button.pack(pady=10)
+        # self.button.pack(pady=10)
+        self.button.pack(in_=self.scrollable_frame, pady=10)
+        # self.button.grid(row=2, column=0, pady=10, sticky="nsew")
 
         self.food_list_text = tk.Text(master, height=4, width=30)
-        self.food_list_text.pack(pady=10)
+        # self.food_list_text.pack(pady=10)
+        self.food_list_text.pack(in_=self.scrollable_frame, pady=10)
+        # self.food_list_text.grid(row=3, column=0, pady=10, sticky="nsew")
 
         self.calorie_label = tk.Label(master, text="kirjoita tähän kalorit:")
-        self.calorie_label.pack(pady=5)
+        # self.calorie_label.pack(pady=5)
+        self.calorie_label.pack(in_=self.scrollable_frame, pady=5)
+        # self.calorie_label.grid(row=4, column=0, pady=5, sticky="nsew")
 
         self.calorie_entry = tk.Entry(master)
-        self.calorie_entry.pack(pady=5)
+        # self.calorie_entry.pack(pady=5)
+        self.calorie_entry.pack(in_=self.scrollable_frame, pady=5)
+        # self.calorie_entry.grid(row=5, column=0, pady=5, sticky="nsew")
 
         self.add_button = tk.Button(
             master, text="Lisää kalorit", command=self.add_calories)
-        self.add_button.pack(pady=10)
+        # self.add_button.pack(pady=10)
+        self.add_button.pack(in_=self.scrollable_frame, pady=10)
+        # self.add_button.grid(row=6, column=0, pady=10, sticky="nsew")
+
+        # self.logout_button = tk.Button(master, text="Kirjaudu ulos", command=self.logout)
+        # self.logout_button.pack(in_=self.scrollable_frame, pady=10)
 
         self.total_label = tk.Label(
             master, text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
-        self.total_label.pack(pady=10)
+        # self.total_label.pack(pady=10)
+        self.total_label.pack(in_=self.scrollable_frame, pady=10)
+        # self.total_label.grid(row=7, column=0, pady=10, sticky="nsew")
+
+        self.scrolled_frame.pack(fill="both", expand=True)
+        # self.scrolled_frame.grid(row=0, column=0, sticky="nsew")
 
     def button_click(self):
         user_input = self.entry.get()
+        # username = self.username_entry.get()
+        user_id = self.login_system.get_user(self.username)
         self.label.config(text=f"Lisätty ruoka: {user_input}")
-        self.add_food()
+        if user_id is not None:
+            self.add_food(user_id=user_id)
+        else:
+            print("Käyttäjää ei löytynyt.")
 
-    def add_food(self):
+    def add_food(self, user_id):
         food_name = self.entry.get()
-        self.login_system.add_food(user_id=1, food_name=food_name)
-        self.update_food_list()
+        self.login_system.add_food(user_id=user_id, food_name=food_name)
+        self.update_food_list(user_id)
 
     def add_calories(self):
         try:
@@ -71,14 +105,14 @@ class View:
         self.total_label.config(
             text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
 
-    def update_food_list(self):
-        user_foods = self.login_system.get_user_foods(user_id=1)
+    def update_food_list(self, user_id):
+        user_foods = self.login_system.get_user_foods(user_id=user_id)
         self.food_list_text.delete(1.0, tk.END)
         for food in user_foods:
             self.food_list_text.insert(tk.END, str(food) + '\n')
         # print("Käyttäjän ruoat:", user_foods)
 
     def main_view_show(self):
-        self.root.deiconify()
+        self.master.deiconify()
 
 # generoitu koodi päättyy
