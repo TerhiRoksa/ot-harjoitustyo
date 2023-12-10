@@ -31,6 +31,7 @@ class SimpleLoginSystemDB:
                     id INTEGER PRIMARY KEY,
                     user_id INTEGER,
                     food_name TEXT NOT NULL,
+                    calories REAL NOT NULL,
                     FOREIGN KEY (user_id) REFERENCES users(id)
                 )
             ''')
@@ -75,11 +76,11 @@ class SimpleLoginSystemDB:
             user_id = cursor.fetchone()
             return user_id[0] if user_id else None
 
-    def add_food(self, user_id, food_name):
+    def add_food(self, user_id, food_name, calories):
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
             cursor.execute(
-                'INSERT INTO foods (user_id, food_name) VALUES (?, ?)', (user_id, food_name))
+                'INSERT INTO foods (user_id, food_name, calories) VALUES (?, ?)', (user_id, food_name, calories))
             print(f"Ruoka {food_name} lisätty onnistuneesti.")
 
     def get_user_foods(self, user_id):

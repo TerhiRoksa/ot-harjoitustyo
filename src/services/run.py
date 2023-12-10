@@ -13,10 +13,11 @@ class RunApplication:
 
     def on_login_success(self):
         username = self.login_view.username_entry.get()
-        Log.hide_login_view(self)
+        self.login_view.hide_login_view()
         main_view = View(self.root, self.login_system,
                          self.calorie_counter, username)
         main_view.main_view_show()
+        
 
     """  
     def clear_data_if_hide(self):

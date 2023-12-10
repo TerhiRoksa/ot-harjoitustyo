@@ -28,6 +28,16 @@ class View:
             master, text="Painonhallintasovellus", font=app_name_font)
         self.app_name_label.pack(in_=self.scrollable_frame, pady=20)
 
+        self.saved_label = tk.Label(master, text="Näytä tallennetut ruokatiedot.")
+        self.saved_label.pack(in_=self.scrollable_frame, pady=10)
+
+        self.button = tk.Button(
+            master, text="Näytä", command=lambda: self.show_foods(self.login_system.get_user(self.username)))
+        self.button.pack(in_=self.scrollable_frame, pady=10)
+
+        self.saved_food_list_text = tk.Text(master, height=4, width=30)
+        self.saved_food_list_text.pack(in_=self.scrollable_frame, pady=10)
+
         self.label = tk.Label(master, text="Lisää syömäsi ruoka")
         self.label.pack(in_=self.scrollable_frame, pady=10)
 
@@ -64,18 +74,31 @@ class View:
 
     def button_click(self):
         user_input = self.entry.get()
+        calories = self.calorie_entry.get()
         user_id = self.login_system.get_user(self.username)
         self.label.config(text=f"Lisätty ruoka: {user_input}")
+        if user_id is not None:
+            self.add_food(user_id=user_id, food_name=user_input, calories=calories)
+            self.update_food_list(user_id)
+        else:
+            print("Käyttäjää ei löytynyt.")
+        """"
         if user_id is not None:
             self.add_food(user_id=user_id)
         else:
             print("Käyttäjää ei löytynyt.")
+        
 
     def add_food(self, user_id):
         food_name = self.entry.get()
         self.login_system.add_food(user_id=user_id, food_name=food_name)
         self.update_food_list(user_id)
-
+    """
+        
+    def add_food(self, user_id, food_name, calories):
+        self.login_system.add_food(user_id=user_id, food_name=food_name, calories=calories)
+        self.update_food_list(user_id)
+    
     def add_calories(self):
         try:
             entered_calories = float(self.calorie_entry.get())
@@ -90,16 +113,35 @@ class View:
         self.calorie_counter = calorie_counter
         self.total_label.config(
             text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
-
+    """"
     def update_food_list(self, user_id):
         user_foods = self.login_system.get_user_foods(user_id=user_id)
         self.food_list_text.delete(1.0, tk.END)
         for food in user_foods:
             self.food_list_text.insert(tk.END, str(food) + '\n')
         # print("Käyttäjän ruoat:", user_foods)
+    """
+
+    def update_food_list(self, user_id):
+        user_foods = self.login_system.get_user_foods(user_id=user_id)
+        self.food_list_text.delete(1.0, tk.END)
+        for food in user_foods:
+            self.food_list_text.insert(tk.END, f"{food.name} - {food.calories} kcal\n")
+
+    def show_foods(self, user_id):
+        user_foods = self.login_system.get_user_foods(user_id=user_id)
+        self.saved_food_list_text.delete(1.0, tk.END)  # Clear the existing content
+
+        if user_foods:
+            for food in user_foods:
+                self.saved_food_list_text.insert(tk.END, str(food) + '\n')
+        else:
+            self.saved_food_list_text.insert(tk.END, "Tallennettuja ruokia ei vielä ole.")
+
 
     def logout(self):
-        # toistaiseksi sovelluksesta poistuminen
+        # toistaiseksi sovelluksesta poistuminen, 
+        # koska näyttöjen näkymien kanssa on ongelma.
         self.master.destroy()
 
     def main_view_show(self):
