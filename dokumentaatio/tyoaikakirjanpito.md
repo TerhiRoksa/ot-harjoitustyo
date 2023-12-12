@@ -10,5 +10,9 @@ päivä  aika  tehtävä
 - 3.12.   8 tuntia    Kirjautumista graafiseen käyttöliittymään.
 - 4.12.   6 tuntia    Käyttäjän ruokien tallennus listaan ja tuominen näkymään.
 - 5.12.   6 tuntia    Testauksen laajennus ja yritin saada kirjautumisen näkymään ensin.
+- 9.12.   5 tuntia    Kirjautumisen näkymän korjaamista
+- 10.12.  5 tuntia    Kirjautumisen näkymän korjaamista
+- 11.12   2 tuntia    Kaloritietojen tallennus
+- 12.12.  2 tuntia    Rakenteen ja koodin siistimistä
 
-Summa 37 tuntia
+Summa 51 tuntia
