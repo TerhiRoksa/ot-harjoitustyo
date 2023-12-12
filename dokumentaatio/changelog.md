@@ -14,3 +14,9 @@ tekstikäyttöliittymäksi kirjautumisen osalta.
 - Kirjautuminen on nyt graafisella käyttöliittymällä, mutta ei vielä toimi yhtä laajasti kuin tekstikäyttöliitymällä. Näkymä ei myöskään ole valmis, koska näkyy yhtäaikaa päänäkymän kanssa.
 - Käyttäjän syöttämät ruoat tallentuu listaan ja näkyy käyttäjälle
 - testausta laajennettu tietokannan testaamiseen
+
+## Viikko 6
+- Kirjautuminen toimii graafisella käyttöliittymällä
+- Uloskirjautuminen toimii
+- Ruokien kaloritiedot tallentuu
+- Käyttäjä voi tyhjentää tallentamansa ruokatiedot
