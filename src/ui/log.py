@@ -5,14 +5,16 @@ from database import SimpleLoginSystemDB
 
 
 class Log:
+
     def __init__(self, root, login_system, on_login_success):
         self.root = root
         self.login_system = login_system
         self.on_login_success = on_login_success
-        self.create_login_ui()
+        self.create_login_view()
         root.title("Kirjautuminen")
 
-    def create_login_ui(self):
+    def create_login_view(self):
+
         tk.Label(self.root, text="Syötä käyttäjänimi:").pack()
         self.username_entry = tk.Entry(self.root)
         self.username_entry.pack(pady=10)
@@ -34,6 +36,11 @@ class Log:
     def register(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
+
+        if not username or not password:
+            self.reg_label.config(
+                text="Käyttäjänimi ja salasana eivät voi olla tyhjiä.")
+            return
 
         self.login_system.register_user(username, password)
         self.reg_label.config(
@@ -62,7 +69,6 @@ class Log:
         self.password_entry.delete(0, tk.END)
 
     def hide_login_view(self):
-        # Piilota kirjautumisnäkymä
         self.root.withdraw()
 
     def show_login_view(self):

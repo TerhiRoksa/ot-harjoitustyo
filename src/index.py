@@ -10,8 +10,10 @@ def main():
     login_system = SimpleLoginSystemDB()
 
     # login_system.clear_data()
+    # login_system.drop_food_database()
 
-    app = RunApplication(root, login_system, calorie_counter)
+    RunApplication(root, login_system, calorie_counter)
+
     root.mainloop()
 
 

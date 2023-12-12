@@ -1,4 +1,4 @@
-
+import tkinter as tk
 from ui.log import Log
 from ui.view import View
 
@@ -10,18 +10,18 @@ class RunApplication:
         self.calorie_counter = calorie_counter
         self.login_view = Log(
             self.root, self.login_system, self.on_login_success)
+        self.login_view.show_login_view()
 
     def on_login_success(self):
-        username = self.login_view.username_entry.get()
-        self.login_view.hide_login_view()
-        main_view = View(self.root, self.login_system,
-                         self.calorie_counter, username)
-        main_view.main_view_show()
-        
 
-    """  
-    def clear_data_if_hide(self):
-        self.login_system.clear_data()
-        self.login_view = Log(
-            self.root, self.login_system, self.on_login_success)
-    """
+        self.username = self.login_view.username_entry.get()
+        self.main_view = tk.Toplevel(self.root)
+        view = View(self.main_view, self.login_system,
+                    self.calorie_counter, self.username, self.on_logout)
+        view.create_main_view()
+        self.login_view.hide_login_view()
+
+    def on_logout(self):
+
+        self.login_view.show_login_view()
+        self.main_view.withdraw()
