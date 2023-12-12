@@ -1,4 +1,13 @@
+
+ # Arkkitehtuurikuvaus
+
 ## Rakenne
+
+Ohjelman koodi on jaettu neljään pakkaukseen eli hakemistoon. Ui:ssa on käyttöliittymän koodi, servicessä sovelluslogiikka, operators sisältää ohjelman tietokohteet ja repositories 
+
+Käyttöliittymä koostuu kahdesta näkymästä. Kirjautumisnäkymä avautuu ensin. siinä voi rekisteröidä uuden käyttäjä ja kirjautua sisään. Päänäkymä avautuu onnistuneen kirjautumisen jälkeen. Molemmat ovat omia luokkia.
+
+Tietojen tallennus tehdään tietokantaan.
 
 ```mermaid
  classDiagram
