@@ -14,5 +14,5 @@ Uusia ruokatietoja tallennetaan lisäämällä ruoka omaan teksinsyöttökenttä
 
 "Tyhjennä tallennetut ruokatiedot" napista käyttäjä voi tyhjentää omat ruokatietonsa.
 
-Sovelluksesta uloskirjautuminen tapahtuu "Kirjaudu ulos" napista, joka löytyy näytön alareunasta. Siitä siirrytään takaisin kirjatumisnäkymään.
+Sovelluksesta uloskirjautuminen tapahtuu "Kirjaudu ulos" napista, joka löytyy näytön alareunasta. Siitä siirrytään takaisin kirjautumisnäkymään.
 
