@@ -56,6 +56,12 @@ class SimpleLoginSystemDB:
             cursor.execute('DELETE FROM foods WHERE user_id=?', (user_id,))
         # print("Käyttäjän tiedot tyhjennetty onnistuneesti.")
 
+    def drop_food_database(self):
+        if os.path.exists(self.food_db_name):
+            os.remove(self.food_db_name)
+            print(f"Database {self.food_db_name} dropped successfully.")
+
+    """
     def register_user(self, username, password):
         password_hash = hashlib.sha256(password.encode()).hexdigest()
         with sqlite3.connect(self.db_name) as connection:
@@ -107,10 +113,7 @@ class SimpleLoginSystemDB:
                 'SELECT SUM(calories) FROM foods WHERE user_id=?', (user_id,))
             total_calories = cursor.fetchone()[0]
             return total_calories if total_calories else 0
-
-    def drop_food_database(self):
-        if os.path.exists(self.food_db_name):
-            os.remove(self.food_db_name)
-            print(f"Database {self.food_db_name} dropped successfully.")
+    
+    """
 
 # generoitu koodi päättyy
