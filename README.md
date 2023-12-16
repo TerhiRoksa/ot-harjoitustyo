@@ -1,6 +1,6 @@
-# Ohjelmistotekniikka, harjoitustyö
-Harjoitustyöni tulee olemaan **Painonhallintasovellus**. Sillä voi pitää 
-kirjaa *syömisistään*, tallentaa ruokia ja laskea kalorimääriä.
+# Painonhallintasovellus
+Tämän sovelluksen tarkoitus on auttaa painonhallinnassa. Sovelluksessa voi pitää 
+kirjaa syömisistään eli tallentaa ruokia ja laskea kalorimääriä.
 
 ## Dokumentaatio
 
