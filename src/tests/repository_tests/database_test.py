@@ -1,5 +1,5 @@
 import unittest
-from database import SimpleLoginSystemDB
+from repositories.database import SimpleLoginSystemDB
 
 
 class TestSimpleLoginSystemDB(unittest.TestCase):

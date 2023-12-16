@@ -2,7 +2,7 @@
 import sqlite3
 import hashlib
 import os
-from repositories.food import Food
+from operators.food import Food
 
 
 class SimpleLoginSystemDB:

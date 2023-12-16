@@ -1,10 +1,14 @@
 import hashlib
 import sqlite3
-from database import SimpleLoginSystemDB
+from repositories.database import SimpleLoginSystemDB
+
 
 class UserService:
-    def __init__(self, login_system):
+    def __init__(self, login_system, db_name='users.db'):
         self.login_system = login_system
+        self.db_name = db_name
+
+    # generoitu koodi alkaa
 
     def register_user(self, username, password):
         password_hash = hashlib.sha256(password.encode()).hexdigest()
@@ -31,3 +35,5 @@ class UserService:
                 'SELECT id FROM users WHERE username=?', (username,))
             user_id = cursor.fetchone()
             return user_id[0] if user_id else None
+
+    # generoitu koodi päättyy

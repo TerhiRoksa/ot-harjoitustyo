@@ -1,8 +1,10 @@
 # generoitu koodi alkaa
 import tkinter as tk
-from database import SimpleLoginSystemDB
-from repositories.calorie_counter import CalorieCounter
-from repositories.food import Food
+from repositories.database import SimpleLoginSystemDB
+from services.food_service import FoodService
+from services.user_service import UserService
+from services.calorie_counter import CalorieCounter
+from operators.food import Food
 from ui.scrolledframe import ScrolledFrame
 
 
@@ -15,6 +17,8 @@ class View(tk.Frame):
         self.username = username
         self.calorie_counter = calorie_counter
         self.login_system = login_system
+        self.user_service = UserService(login_system)
+        self.food_service = FoodService(login_system)
         self.scrolled_frame = ScrolledFrame(master)
         self.scrollable_frame = self.scrolled_frame.scrollable_frame
         self.on_logout_external = on_logout
@@ -31,7 +35,7 @@ class View(tk.Frame):
         self.saved_label.pack(in_=self.scrollable_frame, pady=10)
 
         self.button = tk.Button(
-            self.master, text="Näytä", command=lambda: self.show_foods(self.login_system.get_user(self.username)))
+            self.master, text="Näytä", command=lambda: self.show_foods(self.user_service.get_user(self.username)))
         self.button.pack(in_=self.scrollable_frame, pady=10)
 
         self.saved_food_list_text = tk.Text(self.master, height=4, width=30)
@@ -84,7 +88,7 @@ class View(tk.Frame):
     def button_click(self):
         user_input = self.entry.get()
         calories = self.calorie_entry.get()
-        user_id = self.login_system.get_user(self.username)
+        user_id = self.user_service.get_user(self.username)
         self.label.config(text=f"Lisätty ruoka: {user_input}")
         if user_id is not None:
             self.add_food(user_id=user_id, food_name=user_input,
@@ -97,7 +101,7 @@ class View(tk.Frame):
         self.calorie_entry.delete(0, tk.END)
 
     def add_food(self, user_id, food_name, calories):
-        self.login_system.add_food(
+        self.food_service.add_food(
             user_id=user_id, food_name=food_name, calories=calories)
         self.update_food_list(user_id)
 
@@ -117,7 +121,7 @@ class View(tk.Frame):
             text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
 
     def update_food_list(self, user_id):
-        user_foods = self.login_system.get_user_foods(user_id=user_id)
+        user_foods = self.food_service.get_user_foods(user_id=user_id)
         self.food_list_text.delete(1.0, tk.END)
         for food in user_foods:
             self.food_list_text.insert(
@@ -125,7 +129,7 @@ class View(tk.Frame):
         self.update_total_calories(user_id)
 
     def show_foods(self, user_id):
-        user_foods = self.login_system.get_user_foods(user_id=user_id)
+        user_foods = self.food_service.get_user_foods(user_id=user_id)
         self.saved_food_list_text.delete(1.0, tk.END)
 
         if user_foods:
@@ -136,11 +140,11 @@ class View(tk.Frame):
                 tk.END, "Tallennettuja ruokia ei vielä ole.")
 
     def update_total_calories(self, user_id):
-        total_calories = self.login_system.calculate_total_calories(user_id)
+        total_calories = self.food_service.calculate_total_calories(user_id)
         self.total_label.config(text=f"Kokonaiskalorit: {total_calories:.2f}")
 
     def clear_user_data(self):
-        user_id = self.login_system.get_user(self.username)
+        user_id = self.user_service.get_user(self.username)
         if user_id is not None:
             self.login_system.clear_user_data(user_id)
             self.food_list_text.delete(1.0, tk.END)

@@ -1,5 +1,5 @@
 import unittest
-from repositories.calorie_counter import CalorieCounter
+from services.calorie_counter import CalorieCounter
 
 
 class TestCalorieCounter(unittest.TestCase):
