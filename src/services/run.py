@@ -20,6 +20,7 @@ class RunApplication:
                     self.calorie_counter, self.username, self.on_logout)
         view.create_main_view()
         self.login_view.hide_login_view()
+        return True
 
     def on_logout(self):
 

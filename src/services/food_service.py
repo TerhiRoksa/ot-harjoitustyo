@@ -1,9 +1,9 @@
 import sqlite3
 from operators.food import Food
-from repositories.database import SimpleLoginSystemDB
 
 
 class FoodService:
+
     def __init__(self, login_system, food_db_name='foods.db'):
         self.login_system = login_system
         self.food_db_name = food_db_name
@@ -11,6 +11,13 @@ class FoodService:
     # generoitu koodi alkaa
 
     def add_food(self, user_id, food_name, calories):
+        """AI is creating summary for add_food
+
+        Args:
+            user_id ([type]): [description]
+            food_name ([type]): [description]
+            calories ([type]): [description]
+        """
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
             cursor.execute(
@@ -19,6 +26,14 @@ class FoodService:
             print(f"Ruoka {food_name} lisätty onnistuneesti.")
 
     def get_user_foods(self, user_id):
+        """AI is creating summary for get_user_foods
+
+        Args:
+            user_id ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        """
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
             cursor.execute('SELECT * FROM foods WHERE user_id=?', (user_id,))
@@ -28,6 +43,14 @@ class FoodService:
             return foods
 
     def calculate_total_calories(self, user_id):
+        """AI is creating summary for calculate_total_calories
+
+        Args:
+            user_id ([type]): [description]
+
+        Returns:
+            [type]: [description]
+        """
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
             cursor.execute(

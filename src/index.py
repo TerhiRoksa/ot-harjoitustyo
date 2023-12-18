@@ -1,8 +1,7 @@
 import tkinter as tk
 from services.calorie_counter import CalorieCounter
-from repositories.database import SimpleLoginSystemDB
 from services.run import RunApplication
-
+from repositories.database import SimpleLoginSystemDB
 
 def main():
     root = tk.Tk()
