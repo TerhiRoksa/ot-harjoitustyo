@@ -3,20 +3,28 @@ from operators.food import Food
 
 
 class FoodService:
+    """Luokka, joka käsittelee käyttäjän syöttämiä ruokatietoja.
+    """
 
-    def __init__(self, login_system, food_db_name='foods.db'):
-        self.login_system = login_system
+    def __init__(self, storage_system, food_db_name='foods.db'):
+        """Luokan konstruktori, joka luo uuden FoodServicen.
+
+        Args:
+            storage_system : tallentaa tiedot
+            food_db_name : ruokatietojen tallennuspaikka
+        """
+        self.storage_system = storage_system
         self.food_db_name = food_db_name
 
     # generoitu koodi alkaa
 
     def add_food(self, user_id, food_name, calories):
-        """AI is creating summary for add_food
+        """Lisää ruoan ja sen kalorit käyttäjän ruokatietoihin.
 
         Args:
-            user_id ([type]): [description]
-            food_name ([type]): [description]
-            calories ([type]): [description]
+            user_id: käyttäjän id-numero tietokannassa
+            food_name: ruoka
+            calories: kalorit
         """
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
@@ -26,13 +34,13 @@ class FoodService:
             print(f"Ruoka {food_name} lisätty onnistuneesti.")
 
     def get_user_foods(self, user_id):
-        """AI is creating summary for get_user_foods
+        """Hakee käyttäjän ruokatiedot.
 
         Args:
-            user_id ([type]): [description]
+            user_id: käyttäjän id-numero tietokannassa
 
         Returns:
-            [type]: [description]
+            Merkkijono, joka kertoo käyttäjän ruoat ja niiden kalorit
         """
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()
@@ -43,13 +51,13 @@ class FoodService:
             return foods
 
     def calculate_total_calories(self, user_id):
-        """AI is creating summary for calculate_total_calories
+        """Laskee käyttäjän kokonaiskalorimäärän.
 
         Args:
-            user_id ([type]): [description]
+            user_id: käyttäjän id-numero tietokannassa
 
         Returns:
-            [type]: [description]
+            Numero, joka kertoo käyttäjän kokonaiskalorimäärän.
         """
         with sqlite3.connect(self.food_db_name) as connection:
             cursor = connection.cursor()

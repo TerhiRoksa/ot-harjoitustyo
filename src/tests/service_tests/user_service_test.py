@@ -1,13 +1,13 @@
 import unittest
 from services.user_service import UserService
-from repositories.database import SimpleLoginSystemDB
+from repositories.database import StorageSystemDB
 
 
 class TestFoodService(unittest.TestCase):
 
     def setUp(self):
-        self.login_system = SimpleLoginSystemDB()
-        self.user_service = UserService(self.login_system)
+        self.storage_system = StorageSystemDB()
+        self.user_service = UserService(self.storage_system)
 
     def test_register_user(self):
         username = "tonttu"

@@ -3,7 +3,7 @@ import sqlite3
 import os
 
 
-class SimpleLoginSystemDB:
+class StorageSystemDB:
     def __init__(self, db_name='users.db', food_db_name='foods.db'):
         self.db_name = db_name
         self.food_db_name = food_db_name

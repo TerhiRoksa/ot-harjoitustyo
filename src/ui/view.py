@@ -1,6 +1,6 @@
 # generoitu koodi alkaa
 import tkinter as tk
-from repositories.database import SimpleLoginSystemDB
+from repositories.database import StorageSystemDB
 from services.food_service import FoodService
 from services.user_service import UserService
 from services.calorie_counter import CalorieCounter
@@ -9,16 +9,16 @@ from ui.scrolledframe import ScrolledFrame
 
 
 class View(tk.Frame):
-    def __init__(self, master, login_system, calorie_counter, username, on_logout):
+    def __init__(self, master, storage_system, calorie_counter, username, on_logout):
         super().__init__(master)
         self.master = master
         master.geometry("500x800")
         master.title("Painonhallintasovellus")
         self.username = username
         self.calorie_counter = calorie_counter
-        self.login_system = login_system
-        self.user_service = UserService(login_system)
-        self.food_service = FoodService(login_system)
+        self.login_system = storage_system
+        self.user_service = UserService(storage_system)
+        self.food_service = FoodService(storage_system)
         self.scrolled_frame = ScrolledFrame(master)
         self.scrollable_frame = self.scrolled_frame.scrollable_frame
         self.on_logout_external = on_logout

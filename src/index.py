@@ -1,18 +1,18 @@
 import tkinter as tk
 from services.calorie_counter import CalorieCounter
 from ui.run import RunApplication
-from repositories.database import SimpleLoginSystemDB
+from repositories.database import StorageSystemDB
 
 
 def main():
     root = tk.Tk()
     calorie_counter = CalorieCounter()
-    login_system = SimpleLoginSystemDB()
+    storage_system = StorageSystemDB()
 
-    # login_system.clear_data()
-    # login_system.drop_food_database()
+    # storage_system.clear_data()
+    # storage_system.drop_food_database()
 
-    RunApplication(root, login_system, calorie_counter)
+    RunApplication(root, storage_system, calorie_counter)
 
     root.mainloop()
 

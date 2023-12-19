@@ -4,17 +4,17 @@ import sqlite3
 
 class UserService:
     def __init__(self, login_system, db_name='users.db'):
-        self.login_system = login_system
+        self.storage_system = login_system
         self.db_name = db_name
 
     # generoitu koodi alkaa
 
     def register_user(self, username, password):
-        """AI is creating summary for register_user
+        """Rekisteröi uuden käyttäjän
 
         Args:
-            username ([type]): [description]
-            password ([type]): [description]
+            username : käyttäjänimi
+            password : salasana
         """
         password_hash = hashlib.sha256(password.encode()).hexdigest()
         with sqlite3.connect(self.db_name) as connection:
@@ -24,14 +24,14 @@ class UserService:
                 (username, password_hash))
 
     def login_user(self, username, password):
-        """AI is creating summary for login_user
+        """Kirjaa käyttäjän sisälle sovellukseen
 
         Args:
-            username ([type]): [description]
-            password ([type]): [description]
+            username : käyttäjänimi
+            password : salasana
 
         Returns:
-            [type]: [description]
+            Totuusarvo, joka kertoo onko käyttäjä jo olemassa
         """
         password_hash = hashlib.sha256(password.encode()).hexdigest()
         with sqlite3.connect(self.db_name) as connection:

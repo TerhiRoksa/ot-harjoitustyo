@@ -1,5 +1,5 @@
 import tkinter as tk
-from repositories.database import SimpleLoginSystemDB
+from repositories.database import StorageSystemDB
 from services.user_service import UserService
 
 # generoitu koodi alkaa
@@ -7,10 +7,10 @@ from services.user_service import UserService
 
 class Log:
 
-    def __init__(self, root, login_system, on_login_success):
+    def __init__(self, root, storage_system, on_login_success):
         self.root = root
-        self.login_system = login_system
-        self.user_service = UserService(login_system)
+        self.storage_system = storage_system
+        self.user_service = UserService(storage_system)
         self.on_login_success = on_login_success
         self.create_login_view()
         root.title("Kirjautuminen")

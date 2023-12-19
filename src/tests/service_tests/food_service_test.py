@@ -1,14 +1,14 @@
 import unittest
 from services.food_service import FoodService
-from repositories.database import SimpleLoginSystemDB
+from repositories.database import StorageSystemDB
 
 
 class TestFoodService(unittest.TestCase):
 
     def setUp(self):
-        self.login_system = SimpleLoginSystemDB()
-        self.login_system.clear_data()
-        self.food_service = FoodService(self.login_system)
+        self.storage_system = StorageSystemDB()
+        self.storage_system.clear_data()
+        self.food_service = FoodService(self.storage_system)
 
     def test_add_food(self):
         food_name = "tilli"

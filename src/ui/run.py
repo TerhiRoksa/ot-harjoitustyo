@@ -4,9 +4,9 @@ from ui.view import View
 
 
 class RunApplication:
-    def __init__(self, master, login_system, calorie_counter):
+    def __init__(self, master, storage_system, calorie_counter):
         self.root = master
-        self.login_system = login_system
+        self.login_system = storage_system
         self.calorie_counter = calorie_counter
         self.login_view = Log(
             self.root, self.login_system, self.on_login_success)
