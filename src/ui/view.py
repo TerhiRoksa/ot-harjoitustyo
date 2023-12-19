@@ -62,12 +62,6 @@ class View(tk.Frame):
         self.food_list_text = tk.Text(self.master, height=4, width=30)
         self.food_list_text.pack(in_=self.scrollable_frame, pady=10)
 
-        """"
-        self.add_button = tk.Button(
-            master, text="Laske kaloreita", command=self.add_calories)
-        self.add_button.pack(in_=self.scrollable_frame, pady=10)
-        """
-
         self.total_label = tk.Label(
             self.master, text=f"Kokonaiskalorit: {self.calorie_counter.get_total_calories():.2f}")
         self.total_label.pack(in_=self.scrollable_frame, pady=10)

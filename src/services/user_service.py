@@ -1,6 +1,5 @@
 import hashlib
 import sqlite3
-#from repositories.database import SimpleLoginSystemDB
 
 
 class UserService:

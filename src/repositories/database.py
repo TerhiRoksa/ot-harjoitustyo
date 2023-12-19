@@ -65,5 +65,5 @@ class SimpleLoginSystemDB:
     def drop_food_database(self):
         if os.path.exists(self.food_db_name):
             os.remove(self.food_db_name)
-            print(f"Database {self.food_db_name} dropped successfully.")# generoitu koodi päättyy
-            
+            # generoitu koodi päättyy
+            print(f"Database {self.food_db_name} dropped successfully.")
