@@ -3,8 +3,17 @@ import sqlite3
 
 
 class UserService:
-    def __init__(self, login_system, db_name='users.db'):
-        self.storage_system = login_system
+    """Luokka, joka käsittelee käyttäjän tietoja
+    """
+
+    def __init__(self, storage_system, db_name='users.db'):
+        """Luokan konstruktori, joka luo uuden UserServicen
+
+        Args:
+            storage_system : tallentaa tiedot
+            db_name : käyttjätietojen tallennuspaikka
+        """
+        self.storage_system = storage_system
         self.db_name = db_name
 
     # generoitu koodi alkaa
@@ -43,6 +52,15 @@ class UserService:
             return bool(user)
 
     def get_user(self, username, db_name='users.db'):
+        """Hakee käyttäjän
+
+        Args:
+            username : käyttäjänimi
+            db_name : käyttäjätietojen tallennuspaikka
+
+        Returns:
+            Numeron, joka on käyttäjän id-numero tietokannassa.
+        """
         with sqlite3.connect(db_name) as connection:
             cursor = connection.cursor()
             cursor.execute(

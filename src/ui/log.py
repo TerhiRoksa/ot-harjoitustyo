@@ -6,8 +6,17 @@ from services.user_service import UserService
 
 
 class Log:
+    """Luokka, joka vastaa kirjautumisnäytöstä
+    """
 
     def __init__(self, root, storage_system, on_login_success):
+        """Luokan konstruktori, joka luo uuden Log:in
+
+        Args:
+            root : pääikkuna
+            storage_system : tallentaa tiedot
+            on_login_success : vastaa onnistuneen kirjautumisen jälkeisestä toiminnasta
+        """
         self.root = root
         self.storage_system = storage_system
         self.user_service = UserService(storage_system)
@@ -16,7 +25,8 @@ class Log:
         root.title("Kirjautuminen")
 
     def create_login_view(self):
-
+        """Vastaa kirjautumistoiminnoista
+        """
         tk.Label(self.root, text="Syötä käyttäjänimi:").pack()
         self.username_entry = tk.Entry(self.root)
         self.username_entry.pack(pady=10)
@@ -36,6 +46,8 @@ class Log:
                   command=self.register).pack()
 
     def register(self):
+        """Vastaa uuden käyttäjä rekisteröitymistoiminnoista
+        """
         username = self.username_entry.get()
         password = self.password_entry.get()
 
@@ -52,6 +64,8 @@ class Log:
         self.password_entry.delete(0, tk.END)
 
     def login(self):
+        """Käyttäjän kirjautuminen
+        """
         username = self.username_entry.get()
         password = self.password_entry.get()
 
@@ -72,7 +86,11 @@ class Log:
 # generoitu koodi päättyy
 
     def hide_login_view(self):
+        """piilottaa kirjautumisnäkymän
+        """
         self.root.withdraw()
 
     def show_login_view(self):
+        """näyttää kirjautumisnäkymän
+        """
         self.root.deiconify()
