@@ -14,5 +14,9 @@ päivä  aika  tehtävä
 - 10.12.  5 tuntia    Kirjautumisen näkymän korjaamista
 - 11.12   2 tuntia    Kaloritietojen tallennus
 - 12.12.  2 tuntia    Rakenteen ja koodin siistimistä
+- 18.12.  3 tuntia    Dokumentointia
+- 19.12.  3 tuntia    Dokumentointia
+- 20.12.  2 tuntia    Dokumentointia
+- 21.12.  1 tunti     Viimeistely ja palautus
 
-Summa 51 tuntia
+Summa 60 tuntia
