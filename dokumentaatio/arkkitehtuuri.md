@@ -30,11 +30,13 @@ Päänäkymässä käyttäjä voi hakea tallentamansa ruoat näkyviin tietokanna
 sequenceDiagram
   participant User
   participant Ui
-  participant database
+  participant FoodService
+  participant Database
   
   User ->> +Ui: click "Lisää ruoka" button
-  Ui ->> +database: add_food(user_id, food_name)
-  Ui ->> +database: get_user_foods(user_id=1)
-  database ->> +Ui: foods
-  Ui ->> +User: food_list_text
+  Ui ->> +FoodService: add_food(user_id, food_name, calories)
+  FoodService ->> +Database: INSERT INTO foods (user_id, food_name, calories)
+  Ui ->> +FoodService: get_user_foods(user_id)
+  FoodService ->> +Database: SELECT * FROM foods WHERE user_id=?
+  FoodService ->> +Ui: food_list_text
 ```
