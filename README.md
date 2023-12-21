@@ -16,6 +16,8 @@ kirjaa syömisistään eli tallentaa ruokia ja laskea kalorimääriä.
 
 [Käyttöohje](https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
 
+[Testausdokumentti](https://github.com/TerhiRoksa/ot-harjoitustyo/blob/main/dokumentaatio/testausdokumentti.md)
+
 ## Ohjelman komentoja
 
 Ohjelman käynnistys:
