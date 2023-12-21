@@ -18,6 +18,8 @@ Sovelluksessa on yhdenlaisia käyttäjiä. "Tehty"
 - Käyttäjä näkee tallentamansa ruokatiedot. "Tehty"
 - Käyttäjä voi tallentaa uusia ruokatietoja. "Tehty"
 - Käyttäjä voi tallentaa ruokien kalorimääriä. "Tehty"
+- Käyttäjä näkee tallentamiensa ruokien kokonaiskalorimäärän. "Tehty"
+- Käyttäjä voi poistaa tallentamansa ruokatiedot. "Tehty"
 
 ## Jatkokehitys
 
